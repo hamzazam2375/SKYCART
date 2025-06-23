@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Active Hours | SkyCart</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .active-hours-section {
+            background-color: black;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .active-hours-section h2 {
+            font-size: 2.5rem;
+            color: #c5cfd2a3;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+
+        .hours-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .hours-card {
+            background-color: #2979533b;
+            border-radius: 10px;
+            padding: 30px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hours-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hours-card i {
+            font-size: 2.5rem;
+            color: #ccd5d690;
+            margin-bottom: 20px;
+        }
+
+        .hours-card h3 {
+            font-size: 1.5rem;
+            color: #eee;
+            margin-bottom: 10px;
+        }
+
+        .hours-card p {
+            font-size: 1rem;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .hours-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hours-card {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="bar">
+        <div class="barcont">
+            <a href="index.html" id="main">
+                <img src="logo.png" alt="Logo" class="logo">
+                SKYCART
+            </a>
+
+            <div class="toggle" id="mobile-menu">
+                <span class="nbar"></span>
+                <span class="nbar"></span>
+                <span class="nbar"></span>
+            </div>
+
+            <ul class="menu">
+                <li class="item"><a href="index.html" class="navitem">HOME</a></li>
+                <li class="item"><a href="aboutus.html" class="navitem">INFO</a></li>
+                <li class="navbtn"><a href="login1.html" class="btn">SIGNUP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ACTIVE HOURS SECTION -->
+    <div class="active-hours-section">
+        <h2>Our Active Hours</h2>
+        <div class="hours-container">
+            <div class="hours-card">
+                <i class="fas fa-clock"></i>
+                <h3>Customer Support</h3>
+                <p>Available from 8:00 AM – 10:00 PM (Mon–Sat)</p>
+            </div>
+
+            <div class="hours-card">
+                <i class="fas fa-box-open"></i>
+                <h3>Order Processing</h3>
+                <p>All orders placed before 6:00 PM are processed the same day.</p>
+            </div>
+
+            <div class="hours-card">
+                <i class="fas fa-headset"></i>
+                <h3>Live Chat</h3>
+                <p>24/7 assistance via chat for all your shopping queries.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footercont">
+        <div class="footerlinks">
+            <div class="footerlinkwrapper">
+                <div class="footeritems">
+                    <h2>ABOUT US</h2>
+                    <a href="story.html">Story</a>
+                    <a href="activehours.html">Active Hours</a>
+                    <a href="locations.html">Locations</a>
+                </div>
+
+                <div class="footeritems">
+                    <h2>SHOP</h2>
+                    <a href="login1.html">Range of Products</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="socalmediacont">
+            <div class="socialmediawrap">
+                <div class="footerlogo">
+                    <a href="index.html" id="footerlogo">
+                        <img src="logo.png" alt="Logo" class="logo">
+                    </a>
+                </div>
+                <p class="rights">CLOUDBUY 2025 © ALL RIGHTS RESERVED</p>
+                <div class="socialicons">
+                    <a href="/" class="sm-iconlink">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

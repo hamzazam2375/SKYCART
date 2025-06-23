@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <style>
+    .product-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .d-flex.flex-wrap {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    .product-card {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      height: 100%;
+      background-color: #1c1c1c;
+      color: white;
+    }
+
+    body {
+      background-color: #121212;
+      color: white;
+    }
+
+    .btn-group .btn {
+      margin-right: 10px;
+    }
+
+    .form-select {
+      max-width: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container py-4">
+    <!-- Top Header: Title + Buttons -->
+    <!-- Inside your body tag, just replace this section -->
+
+    <!-- Top Header: Title + Search Bar + Buttons -->
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+      <h2 class="mb-2 mb-md-0">Products</h2>
+
+      <!-- Centered Search Bar -->
+      <div class="mx-auto my-2" style="flex-grow: 1; max-width: 400px;">
+        <input type="text" class="form-control text-center" placeholder="Search products..." id="searchInput"
+          onkeyup="applyFilters()" />
+      </div>
+
+      <!-- Buttons -->
+      <div class="d-flex gap-2 mb-2 mb-md-0">
+        <a href="viewcart.html" class="btn btn-success">View Cart</a>
+        <a href="updateprofile.html" class="btn btn-warning">Update Profile</a>
+        <a href="orderhistory.html" class="btn btn-info">Order History</a>
+        <a href="login1.html" class="btn btn-danger">Logout</a>
+      </div>
+    </div>
+
+    <!-- Orders Display Section -->
+    <div class="container mb-4" id="orderHistoryContainer" style="display: none;">
+      <div class="p-4 rounded-4 shadow"
+        style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1);">
+        <h4 class="mb-4 text-info">
+          <i class="bi bi-bag-check-fill me-2"></i>Your Order History
+        </h4>
+        <div id="ordersList"></div>
+      </div>
+    </div>
+
+    <!-- View & Filter Section -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <!-- View Buttons -->
+      <div class="btn-group" role="group">
+        <button class="btn btn-outline-light" onclick="changeView('list')">List View</button>
+        <button class="btn btn-outline-light" onclick="changeView('normal')">Normal View</button>
+        <button class="btn btn-outline-light" onclick="changeView('compact')">Compact View</button>
+      </div>
+
+      <!-- Filter Dropdowns -->
+      <div class="d-flex gap-3">
+        <select class="form-select" onchange="applyFilters()" id="sortSelect">
+          <option value="">Sort By</option>
+          <option value="pricelowtohigh">Price Low to High</option>
+          <option value="pricehightolow">Price High to Low</option>
+          <option value="rating">Rating</option>
+        </select>
+
+        <select class="form-select" onchange="applyFilters()" id="categorySelect">
+          <option value="">All Categories</option>
+          <option value="1">Electronics</option>
+          <option value="2">Clothing</option>
+          <option value="3">Books</option>
+          <option value="4">Home Appliences</option>
+          <option value="10">Fashion</option>
+          <option value="11">Beauty and Personal Care</option>
+          <option value="12">Groceries and Essentials</option>
+          <option value="13">Sports and Fitness</option>
+          <option value="14">Toys and Games</option>
+          <option value="16">Pet Supplies</option>
+          <option value="17">Automotive</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="row" id="productsContainer"></div>
+  </div>
+
+  <script>
+    let currentView = 'normal';
+
+    function changeView(view) {
+      currentView = view;
+      fetchProducts(); // reload with new view
+    }
+
+    function applyFilters() {
+      fetchProducts();
+    }
+
+    async function fetchProducts() {
+      const sortBy = document.getElementById('sortSelect').value;
+      const category = document.getElementById('categorySelect').value;
+      const search = document.getElementById('searchInput').value.trim();
+      const productsContainer = document.getElementById("productsContainer");
+
+      try {
+        const queryParams = new URLSearchParams();
+        if (sortBy) queryParams.append("sortBy", sortBy);
+        if (category) queryParams.append("category", category);
+        if (search) queryParams.append("search", search);
+
+        // Fetch products and ratings in parallel
+        const [productsResponse, ratingsResponse] = await Promise.all([
+          fetch(`http://localhost:3000/products?${queryParams}`),
+          fetch(`http://localhost:3000/product-ratings`)
+        ]);
+
+        const products = await productsResponse.json();
+        const ratingsData = await ratingsResponse.json();
+        const ratingsMap = ratingsData.ratings || {};
+
+        productsContainer.innerHTML = "";
+
+        products.forEach(product => {
+          const averageRating = ratingsMap[product.ProductID] || "No ratings yet";
+
+          const productCard = `
+        <div class="${currentView === 'list' ? 'col-12' : currentView === 'compact' ? 'col-md-3' : 'col-md-4'}">
+          <div class="card mb-3 product-card">
+            <div class="product-image">
+              <img src="images/${product.ProductID}.jpg" alt="${product.ProdName}">
+            </div>
+            <div class="product-info">
+              <h5 class="card-title">${product.ProdName}</h5>
+              <p class="card-text">Category : ${product.CategoryName}</p>
+              <p class="card-text">Price : $${product.Price}</p>
+              <p class="card-text">Stock : ${product.Stock}</p>
+              <p class="card-text">Rating : ⭐ ${averageRating}</p>
+              <button class="btn btn-primary mb-2" onclick="addToCart(${product.ProductID})">Add to Cart</button>
+              <a class="btn btn-outline-light" href="reviews.html?productID=${product.ProductID}">Reviews</a>
+            </div>
+          </div>
+        </div>
+      `;
+          productsContainer.innerHTML += productCard;
+        });
+      } catch (error) {
+        console.error("Error fetching products or ratings:", error);
+        productsContainer.innerHTML = "<p>Failed to load products. Please try again later.</p>";
+      }
+    }
+
+    async function addToCart(productID) {
+      const userID = localStorage.getItem("userID");
+
+      if (!userID) {
+        alert("You need to be logged in to add items to the cart.");
+        return;
+      }
+
+      const quantity = 1;
+
+      try {
+        const response = await fetch("http://localhost:3000/add-to-cart", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userID: userID,
+            productID: productID,
+            quantity: quantity,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert(data.message);
+        } else {
+          alert(data.error);
+        }
+      } catch (error) {
+        console.error("Error adding item to cart:", error);
+        alert("An error occurred while adding the item to the cart.");
+      }
+    }
+    // Initial load
+    fetchProducts();
+  </script>
+</body>
+
+</html>

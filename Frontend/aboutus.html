@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | SkyCart</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Cool Section Styles */
+        .cool-section {
+            background-color: black;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .cool-section h2 {
+            font-size: 2.5rem;
+            color:
+                #c5cfd2a3;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .cool-cont {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cool-card {
+            background-color: #2979533b;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 30px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cool-card i {
+            font-size: 3rem;
+            color: #ccd5d690;
+            margin-bottom: 20px;
+        }
+
+        .cool-card h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .cool-card p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* About Section Styles */
+        .services {
+            padding: 30px 0;
+            /* Reduced padding */
+            text-align: center;
+        }
+
+        .services h1 {
+            font-size: 2rem;
+            /* Reduced font size */
+            color: #f4eeee64;
+            margin-bottom: 20px;
+            /* Reduced margin */
+        }
+
+        .sercont {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            /* Adjusted top margin */
+        }
+
+        .sercard {
+            background-color: #0a1b23;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            /* Reduced padding */
+            width: 250px;
+            /* Reduced width */
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .sercard:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .sercard h2 {
+            font-size: 2rem;
+            /* Reduced font size */
+            color: #f5eeee;
+            margin-bottom: 20px;
+            /* Reduced margin */
+        }
+
+        .sercard p {
+            margin-bottom: 20;
+            font-size: 1rem;
+            /* Reduced font size */
+            color:
+                #e3d8d8;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .sercont {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sercard {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="bar">
+        <div class="barcont">
+            <a href="index.html" id="main">
+                <img src="logo.png" alt="Logo" class="logo">
+                SKYCART
+            </a>
+
+            <div class="toggle" id="mobile-menu">
+                <span class="nbar"></span>
+                <span class="nbar"></span>
+                <span class="nbar"></span>
+            </div>
+
+            <ul class="menu">
+                <li class="item"><a href="index.html" class="navitem">HOME</a></li>
+                <li class="item"><a href="aboutus.html" class="navitem">INFO</a></li>
+                <li class="navbtn"><a href="login1.html" class="btn">SIGNUP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div class="herocont">
+            <div class="content">
+                <h1>About SkyCart</h1>
+                <h2>Your Trusted Digital Marketplace</h2>
+                <p>At SkyCart, we believe shopping should be seamless, secure, and sky-high in savings. Get to know us
+                    below!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <div class="services">
+        <h1>OUR STORY</h1>
+        <div class="sercont">
+            <div class="sercard">
+                <img src="p3.jpg" alt="Mission" class="ser-img">
+                <h2>Our Mission</h2>
+                <p>We aim to bring unbeatable prices and a world-class shopping experience to every doorstep.</p>
+            </div>
+
+            <div class="sercard">
+                <img src="p2.jpg" alt="Vision" class="ser-img">
+                <h2>Our Vision</h2>
+                <p>To become the most trusted digital marketplace, loved by millions for our sky-high savings.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW COOL SECTION -->
+    <div class="cool-section">
+        <h2>Why Choose SkyCart?</h2>
+        <div class="cool-cont">
+            <div class="cool-card">
+                <i class="fas fa-truck"></i>
+                <h3>Fast Delivery</h3>
+                <p>Get your products delivered swiftly and securely, anywhere, anytime.</p>
+            </div>
+
+            <div class="cool-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Secure Shopping</h3>
+                <p>Your privacy and security are our top priority. Shop with peace of mind!</p>
+            </div>
+
+            <div class="cool-card">
+                <i class="fas fa-tags"></i>
+                <h3>Best Prices</h3>
+                <p>Find unbeatable deals and discounts on a wide range of products.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footercont">
+        <div class="footerlinks">
+            <div class="footerlinkwrapper">
+                <div class="footeritems">
+                    <h2>ABOUT US</h2>
+                    <a href="story.html">Story</a>
+                    <a href="activehours.html">Active Hours</a>
+                    <a href="locations.html">Locations</a>
+                </div>
+
+                <div class="footeritems">
+                    <h2>SHOP</h2>
+                    <a href="login1.html">Range of Products</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="socalmediacont">
+            <div class="socialmediawrap">
+                <div class="footerlogo">
+                    <a href="index.html" id="footerlogo">
+                        <img src="logo.png" alt="Logo" class="logo">
+                    </a>
+                </div>
+                <p class="rights">CLOUDBUY 2025 © ALL RIGHTS RESERVED</p>
+                <div class="socialicons">
+                    <a href="/" class="sm-iconlink">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        .card {
+            background-color: white;
+            color: black;
+        }
+    </style>
+    <script>
+        async function updateProfile(event) {
+            event.preventDefault();
+
+            const userName = localStorage.getItem("userName");
+            const password = document.getElementById("password").value.trim();
+            const newEmail = document.getElementById("newEmail").value.trim();
+            const newPassword = document.getElementById("newPassword").value.trim();
+            const newPhonesRaw = document.getElementById("newPhones").value.trim();
+
+            if (!userName || !password) {
+                alert("Username and current password are required.");
+                return;
+            }
+
+            const newPhones = newPhonesRaw
+                ? newPhonesRaw.split(",").map(p => p.trim()).filter(Boolean)
+                : [];
+
+            const response = await fetch("http://localhost:3000/updateUser", {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    userName,
+                    newEmail: newEmail || undefined,
+                    newPhones,
+                    password,
+                    newPassword: newPassword || undefined,
+                })
+            });
+
+            const data = await response.json();
+            alert(data.message || data.error);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="card p-4">
+            <h2 class="text-center">Update Profile</h2>
+            <form onsubmit="updateProfile(event)">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="newEmail" class="form-label">New Email</label>
+                    <input type="email" class="form-control" id="newEmail">
+                </div>
+                <div class="mb-3">
+                    <label for="newPhones" class="form-label">New Phone Numbers (comma-separated)</label>
+                    <input type="text" class="form-control" id="newPhones" placeholder="e.g. 03001234567,0213876543">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Current Password</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+                <div class="mb-3">
+                    <label for="newPassword" class="form-label">New Password</label>
+                    <input type="password" class="form-control" id="newPassword">
+                </div>
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+                <a href="products.html" class="btn btn-secondary">Back</a>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

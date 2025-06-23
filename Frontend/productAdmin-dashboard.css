@@ -1,0 +1,731 @@
+/* Overall Body Styling */
+body {
+    background-color: #00000d;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px;
+    padding: 20px;
+    background-color: #1c1c1c;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+}
+
+/* Heading Styling */
+h1.dashboard-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Centering the "View Products" button */
+.options {
+    text-align: center;
+}
+
+/* Stylish View Products Button */
+.view-products-btn {
+    background-color: #007BFF;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.view-products-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+/* Add Product Button */
+.add-product-btn {
+    background-color: #ff9800;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.add-product-btn:hover {
+    background-color: #fb8c00;
+    transform: scale(1.05);
+}
+
+/* Product item styling */
+.product-item {
+    background-color: #fff;
+    color: #000;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    width: calc(33.33% - 20px);
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Product Actions (Update, Delete buttons) */
+.product-actions button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.update-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.product-actions button:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* Modal styling */
+#updateProductModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#updateProductForm {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+#updateProductForm label {
+    font-size: 1.1em;
+    margin: 10px 0;
+    display: block;
+    color: #333;
+}
+
+#updateProductForm input,
+#updateProductForm textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#updateProductForm textarea {
+    resize: vertical;
+}
+
+#updateProductForm button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+#updateProductForm button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Add Product Form Modal */
+#addProductModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#addProductForm {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+#addProductForm label {
+    font-size: 1.1em;
+    margin: 10px 0;
+    display: block;
+    color: #333;
+}
+
+#addProductForm input,
+#addProductForm textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#addProductForm textarea {
+    resize: vertical;
+}
+
+#addProductForm button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+#addProductForm button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Message Box */
+.message-box {
+    display: none;
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+.message-box.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.message-box.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Styling for the modal */
+#updateInventoryModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Modal content */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+}
+
+/* Form fields */
+#updateInventoryForm label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #333;
+}
+
+#updateInventoryForm input,
+#updateInventoryForm select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Submit button styling */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    /* Change button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+}
+
+/* Optional: Close button */
+#closeInventoryModal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Button styles for 'Update Inventory' */
+.updateInventory-btn {
+    background-color: #28a745;
+    /* Green for update */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.updateInventory-btn:hover {
+    background-color: #218838;
+    /* Darker green on hover */
+}
+
+/* Button styles for 'Reviews' */
+.reviews-btn {
+    background-color: #ffc107;
+    /* Yellow for reviews */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reviews-btn:hover {
+    background-color: #e0a800;
+    /* Darker yellow on hover */
+}
+
+/* Optional: Additional style if you need button spacing */
+button {
+    margin-right: 10px;
+}
+
+/* Modal Overlay */
+.modal {
+    display: none;
+    /* Default hidden, JS will set to flex */
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease-in-out;
+    /* Smooth fade-in animation */
+}
+
+/* Modal Header */
+.modal h2,
+.modal h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* Text Paragraph */
+.modal p {
+    margin: 8px 0;
+    font-family: 'Roboto', sans-serif;
+    color: #444;
+    line-height: 1.4;
+}
+
+/* Input Styles */
+.modal input[type="number"],
+.modal input[type="text"],
+.modal input[type="email"],
+.modal input[type="tel"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* Button Styles */
+.modal button,
+.change-supplier-btn {
+    padding: 10px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+/* Button Hover Effect */
+.modal button:hover,
+.change-supplier-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Input Label Styles */
+.modal label {
+    display: block;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.success-message {
+    background-color: #28a745;
+    /* Green background for success */
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease, top 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.success-message.show {
+    opacity: 1;
+    top: 20px;
+    /* Move it to the top */
+}
+
+.change-password-btn {
+    position: absolute;
+    top: 45px;
+    right: 65px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.change-password-btn:hover {
+    background-color: #0056b3;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+#changePasswordModal {
+    display: flex;
+    /* Enable flexbox */
+    justify-content: center;
+    /* Horizontally center */
+    align-items: center;
+    /* Vertically center */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Optional: dark overlay */
+    z-index: 1001;
+}
+
+#changePasswordModal button[type="submit"] {
+    background-color: #007bff;
+    /* Blue */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#changePasswordModal button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#changePasswordModal button#closeChangePasswordModalBtn {
+    background-color: #dc3545;
+    /* Red */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#changePasswordModal button#closeChangePasswordModalBtn:hover {
+    background-color: #c82333;
+}
+
+/* Form container */
+.password-form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border: 2px solid #333;
+    /* Dark border around the form */
+    background: linear-gradient(145deg, #f8f9fa, #dcdfe1);
+    /* Light gradient */
+}
+
+/* Form header */
+.password-form-container h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form input fields */
+.password-form-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.password-form-container input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Submit button */
+.password-form-container button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.password-form-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Close Button below Change Password button */
+.password-form-container .close-btn {
+    background-color: #ff4c4c;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.password-form-container .close-btn:hover {
+    background-color: #cc3c3c;
+}
+
+#changePasswordModal .modal-content {
+    max-width: 400px;
+    /* or whatever width feels right */
+    width: 100%;
+}
+
+.selection-list {
+    list-style: none;
+    margin-top: 10px;
+    padding-left: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.selection-list li {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: black;
+}
+
+.selection-list li:hover {
+    background-color: #e0e0e0;
+}
+
+.add-supplier-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+.add-supplier-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+#addSupplierModal {
+    display: none;
+    position: fixed;
+    padding: 20px;
+    top: 0;
+    left: 100;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#addSupplierForm {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}

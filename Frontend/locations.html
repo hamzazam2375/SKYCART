@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Locations | SkyCart</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        .locations-section {
+            background-color: #000;
+            color: #f2f2f2;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .locations-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #c5cfd2a3;
+        }
+
+        .location-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .location-card {
+            background-color: #2979533b;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 25px;
+            width: 280px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: 0.3s ease-in-out;
+        }
+
+        .location-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .location-card i {
+            font-size: 2.5rem;
+            color: #ccd5d690;
+            margin-bottom: 15px;
+        }
+
+        .location-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .location-card p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .location-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .location-card {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="bar">
+        <div class="barcont">
+            <a href="index.html" id="main">
+                <img src="logo.png" alt="Logo" class="logo">
+                SKYCART
+            </a>
+            <div class="toggle" id="mobile-menu">
+                <span class="nbar"></span>
+                <span class="nbar"></span>
+                <span class="nbar"></span>
+            </div>
+            <ul class="menu">
+                <li class="item"><a href="index.html" class="navitem">HOME</a></li>
+                <li class="item"><a href="aboutus.html" class="navitem">INFO</a></li>
+                <li class="navbtn"><a href="login1.html" class="btn">SIGNUP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- LOCATIONS SECTION -->
+    <section class="locations-section">
+        <h2>Our Locations</h2>
+        <div class="location-cards">
+            <div class="location-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Karachi</h3>
+                <p>SkyCart HQ<br>Gulshan-e-Iqbal, Block 5<br>Phone: 021-1234567</p>
+            </div>
+
+            <div class="location-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Lahore</h3>
+                <p>SkyCart Center<br>Model Town, Link Road<br>Phone: 042-7654321</p>
+            </div>
+
+            <div class="location-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Islamabad</h3>
+                <p>SkyCart North<br>Blue Area, F-7 Sector<br>Phone: 051-2468101</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footercont">
+        <div class="footerlinks">
+            <div class="footerlinkwrapper">
+                <div class="footeritems">
+                    <h2>ABOUT US</h2>
+                    <a href="story.html">Story</a>
+                    <a href="activehours.html">Active Hours</a>
+                    <a href="locations.html">Locations</a>
+                </div>
+                <div class="footeritems">
+                    <h2>SHOP</h2>
+                    <a href="login1.html">Range of Products</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="socalmediacont">
+            <div class="socialmediawrap">
+                <div class="footerlogo">
+                    <a href="index.html" id="footerlogo">
+                        <img src="logo.png" alt="Logo" class="logo">
+                    </a>
+                </div>
+                <p class="rights">CLOUDBUY 2025 © ALL RIGHTS RESERVED</p>
+                <div class="socialicons">
+                    <a href="/" class="sm-iconlink">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

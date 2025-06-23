@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin-dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">Admin Dashboard</h1>
+
+        <!-- Change Password Button -->
+        <button class="change-password-btn" id="changePasswordBtn">Change Password</button>
+
+        <div class="options">
+            <button class="option-btn" id="viewProductsBtn"><i class="fas fa-box-open"></i> View All Products</button>
+            <button class="option-btn" id="inventoryDetailsBtn"><i class="fas fa-archive"></i> Inventory
+                Details</button>
+            <button class="option-btn" id="salesReportBtn"><i class="fas fa-chart-line"></i> Monthly Sales
+                Report</button>
+            <button class="option-btn" id="viewAdminsBtn"><i class="fas fa-users"></i> View and Remove Admins</button>
+            <button class="option-btn" id="allOrdersBtn"><i class="fas fa-shopping-cart"></i> All Orders</button>
+            <button class="option-btn" id="viewUsersBtn"><i class="fas fa-users"></i> Customers and Order
+                History</button>
+        </div>
+
+        <!-- Sections for different content -->
+        <div class="section" id="viewProductsSection">
+            <div id="products-list" class="list-container">Loading Products...</div>
+        </div>
+
+        <div class="section" id="inventoryDetailsSection">
+            <div id="inventory-list" class="list-container">Loading Inventory...</div>
+        </div>
+
+        <div class="section" id="salesReportSection">
+            <div id="sales-report" class="list-container">Loading Sales Report...</div>
+        </div>
+
+        <div class="section" id="viewAdminsSection">
+            <div id="admins-list" class="list-container">Loading Admins...</div>
+        </div>
+
+        <div class="section" id="allOrdersSection">
+            <div id="orders-list" class="list-container">Loading Orders...</div>
+        </div>
+
+        <div class="section" id="viewUsersSection">
+            <div id="users-list" class="list-container">Loading Users...</div>
+        </div>
+    </div>
+
+    <div id="changePasswordModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Change Password</h2>
+            <form id="changePasswordForm">
+                <label for="adminIDInput">Admin ID:</label>
+                <input type="text" id="adminIDInput" name="adminID" required>
+
+                <label for="previousPasswordInput">Current Password:</label>
+                <input type="password" id="previousPasswordInput" name="previousPassword" required>
+
+                <label for="newPasswordInput">New Password:</label>
+                <input type="password" id="newPasswordInput" name="newPassword" required>
+
+                <button type="submit">Change Password</button>
+                <button type="button" id="closeChangePasswordModalBtn">Close</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,464 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #101010;
+    padding: 20px;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Dashboard Title */
+.dashboard-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Options Section (Buttons) */
+.options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.option-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.option-btn i {
+    margin-right: 8px;
+}
+
+.option-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Sections (Orders and Users) */
+.section {
+    display: none;
+    margin-top: 20px;
+}
+
+#ordersSection {
+    display: block;
+    /* Show orders section by default */
+}
+
+#usersSection {
+    display: none;
+}
+
+/* Filter Orders */
+#filterOrdersBtn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#filterOrdersBtn:hover {
+    background-color: #218838;
+}
+
+/* Lists (Users and Orders) */
+.list-container {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    min-height: 100px;
+}
+
+.user-item,
+.order-item {
+    background-color: #f8f8f8;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.user-item h3 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.user-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.order-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+button {
+    padding: 8px 16px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Assign Coupon Button */
+.assign-coupon-btn {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.assign-coupon-btn:hover {
+    background-color: #e0a800;
+}
+
+/* Order History Button */
+.order-history-btn {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.order-history-btn:hover {
+    background-color: #138496;
+}
+
+/* General Styles */
+.coupon-form-section {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 20px auto;
+    font-family: 'Roboto', sans-serif;
+}
+
+.coupon-form-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Input Styles */
+.coupon-form-section input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.coupon-form-section input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.coupon-form-section button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.coupon-form-section button:hover {
+    background-color: #45a049;
+}
+
+/* Success & Error Message Styling */
+.coupon-message {
+    margin-top: 15px;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    display: none;
+}
+
+.coupon-message.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.coupon-message.error {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal content */
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    font-family: 'Roboto', sans-serif;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Form styles */
+.modal-content form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #555;
+}
+
+.modal-content form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Buttons */
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.save-btn,
+.cancel-btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save-btn {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.save-btn:hover {
+    background-color: #218838;
+}
+
+.cancel-btn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.cancel-btn:hover {
+    background-color: #c82333;
+}
+
+.change-password-btn {
+    position: absolute;
+    top: 30px;
+    right: 100px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.change-password-btn:hover {
+    background-color: #0056b3;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+#changePasswordModal {
+    display: flex;
+    /* Enable flexbox */
+    justify-content: center;
+    /* Horizontally center */
+    align-items: center;
+    /* Vertically center */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Optional: dark overlay */
+    z-index: 1001;
+}
+
+#changePasswordModal button[type="submit"] {
+    background-color: #007bff;
+    /* Blue */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#changePasswordModal button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#changePasswordModal button#closeChangePasswordModalBtn {
+    background-color: #dc3545;
+    /* Red */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#changePasswordModal button#closeChangePasswordModalBtn:hover {
+    background-color: #c82333;
+}
+
+/* Form container */
+.password-form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border: 2px solid #333;
+    /* Dark border around the form */
+    background: linear-gradient(145deg, #f8f9fa, #dcdfe1);
+    /* Light gradient */
+}
+
+/* Form header */
+.password-form-container h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form input fields */
+.password-form-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.password-form-container input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Submit button */
+.password-form-container button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.password-form-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Close Button below Change Password button */
+.password-form-container .close-btn {
+    background-color: #ff4c4c;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.password-form-container .close-btn:hover {
+    background-color: #cc3c3c;
+}

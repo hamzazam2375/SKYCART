@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Admin Dashboard</title>
+    <link rel="stylesheet" href="productAdmin-dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">Product Admin Dashboard</h1>
+        <button class="change-password-btn" id="changePasswordBtn">Change Password</button>
+        <div class="options">
+            <button class="view-products-btn" id="viewProductsBtn">
+                <i class="fas fa-box-open"></i> View Products
+            </button>
+            <button class="add-product-btn" id="addProductBtn">
+                <i class="fas fa-plus-circle"></i> Add Product
+            </button>
+            <button class="add-supplier-btn" id="addSupplierBtn">
+                <i class="fas fa-user-plus"></i> Add Supplier
+            </button>
+        </div>
+
+        <!-- View Products Section -->
+        <div class="section" id="productsSection" style="display:none;">
+            <h2>Product Inventory</h2>
+            <!-- ✅ Message Box -->
+            <div id="productMessage" class="message-box"></div>
+            <div id="productsList" class="list-container">Loading products...</div>
+        </div>
+    </div>
+
+    <!-- ✅ Add Supplier Modal -->
+    <div id="addSupplierModal" class="modal" style="display: none;">
+        <form id="addSupplierForm" class="modal-content">
+            <h3>Add Supplier</h3>
+
+            <label for="supplierNameInput">Supplier Name</label>
+            <input type="text" id="supplierNameInput" placeholder="Enter supplier name" required>
+
+            <label for="buildingNameInput">Building Name</label>
+            <input type="text" id="buildingNameInput" placeholder="Optional">
+
+            <label for="streetNoInput">Street No</label>
+            <input type="number" id="streetNoInput" placeholder="Enter street number" required>
+
+            <label for="industrialAreaInput">Industrial Area</label>
+            <input type="text" id="industrialAreaInput" placeholder="Optional">
+
+            <label for="cityInput">City</label>
+            <input type="text" id="cityInput" placeholder="Enter city" required>
+
+            <label for="countryInput">Country</label>
+            <input type="text" id="countryInput" placeholder="Enter country" required>
+
+            <label for="postalCodeInput">Postal Code</label>
+            <input type="text" id="postalCodeInput" placeholder="Optional">
+
+            <label for="supplierContactInput">Contact Numbers (comma separated)</label>
+            <input type="text" id="supplierContactInput" placeholder="e.g. 1234567, 1234568" required>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <!-- ✅ Add Product Modal -->
+    <div id="addProductModal" class="modal" style="display:none;">
+        <form id="addProductForm" class="modal-content">
+            <h3>Add Product</h3>
+            <label for="prodName">Product Name:</label>
+            <input type="text" id="prodName" required>
+
+            <label for="categoryBtn">Choose Category:</label>
+            <button type="button" id="categoryBtn">Show Categories</button>
+            <ul id="categoryList" class="selection-list" style="display: none;"></ul>
+            <input type="hidden" id="categoryID" name="categoryID">
+
+            <label for="price">Price:</label>
+            <input type="number" id="price" required>
+
+            <label for="stock">Stock Quantity:</label>
+            <input type="number" id="stock" required>
+
+            <label for="supplierBtn">Choose Supplier:</label>
+            <button type="button" id="supplierBtn">Show Suppliers</button>
+            <ul id="supplierList" class="selection-list" style="display: none;"></ul>
+            <input type="hidden" id="supplierID" name="supplierID">
+
+            <label for="prodDescription">Description:</label>
+            <textarea id="prodDescription" rows="3"></textarea>
+
+            <button type="submit">Add Product</button>
+        </form>
+    </div>
+
+    <!-- ✅ Update Product Modal -->
+    <div id="updateProductModal" class="modal" style="display: none;">
+        <form id="updateProductForm" class="modal-content">
+            <!-- Hidden field for Product ID -->
+            <input type="hidden" id="modalProductId" name="productId" />
+
+            <h3>Update Product</h3>
+
+            <label for="modalProdName">Product Name:</label>
+            <input type="text" id="modalProdName" required>
+
+            <label for="modalPrice">Price:</label>
+            <input type="number" id="modalPrice" required>
+
+            <label for="modalDescription">Description:</label>
+            <textarea id="modalDescription" rows="3"></textarea>
+
+            <label for="modalCategory">Category ID:</label>
+            <input type="number" id="modalCategory">
+
+            <button type="submit">Update Product</button>
+        </form>
+    </div>
+
+    <!-- ✅ Update Inventory Modal -->
+    <div id="updateInventoryModal" style="display: none;">
+        <div class="modal-content">
+            <h2>Update Product Inventory</h2>
+            <form id="updateInventoryForm">
+                <label for="changeQuantity">Quantity Change</label>
+                <input type="number" id="changeQuantity" placeholder="Enter quantity" required>
+
+                <label for="transactionType">Transaction Type</label>
+                <select id="transactionType">
+                    <option value="ADD">Add</option>
+                    <option value="REMOVE">Remove</option>
+                </select>
+
+                <button type="submit" class="submit-btn">Update Inventory</button>
+            </form>
+            <div id="inventoryMessage" class="message-box"></div>
+        </div>
+    </div>
+
+    <!-- ✅ Fully Functional Reviews & Supplier Modal -->
+    <div id="reviewsModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h3>Reviews</h3>
+            <div id="reviewsContent">Loading reviews...</div>
+        </div>
+    </div>
+
+    <!-- Change Supplier Modal -->
+    <div id="changeSupplierModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h3>Change Supplier</h3>
+
+            <!-- Change Supplier Form -->
+            <form id="changeSupplierForm">
+                <input type="hidden" id="productId" />
+
+                <label for="supplierName">Supplier Name:</label>
+                <input type="text" id="supplierName" required>
+
+                <label for="supplierContact">Supplier Contact:</label>
+                <input type="text" id="supplierContact" required>
+
+                <label for="buildingName">Building Name (optional):</label>
+                <input type="text" id="buildingName">
+
+                <label for="streetNo">Street No:</label>
+                <input type="number" id="streetNo" required>
+
+                <label for="industrialArea">Industrial Area:</label>
+                <input type="text" id="industrialArea" required>
+
+                <label for="city">City:</label>
+                <input type="text" id="city" required>
+
+                <label for="country">Country:</label>
+                <input type="text" id="country" required>
+
+                <label for="postalCode">Postal Code (optional):</label>
+                <input type="text" id="postalCode">
+
+                <button type="submit">Change Supplier</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="changePasswordModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Change Password</h2>
+            <form id="changePasswordForm">
+                <label for="adminIDInput">Admin ID:</label>
+                <input type="text" id="adminIDInput" name="adminID" required>
+
+                <label for="previousPasswordInput">Current Password:</label>
+                <input type="password" id="previousPasswordInput" name="previousPassword" required>
+
+                <label for="newPasswordInput">New Password:</label>
+                <input type="password" id="newPasswordInput" name="newPassword" required>
+
+                <button type="submit">Change Password</button>
+                <button type="button" id="closeChangePasswordModalBtn">Close</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="successMessage" class="success-message">
+        Supplier updated successfully!
+    </div>
+
+    <script src="scriptForProductAdmin.js"></script>
+</body>
+
+</html>

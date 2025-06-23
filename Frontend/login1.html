@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Register</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: black !important;
+            color: bisque !important;
+        }
+    </style>
+    <script>
+        async function registerUser(event) {
+            event.preventDefault();
+
+            const userName = document.getElementById("reg-username").value.trim();
+            const password = document.getElementById("reg-password").value.trim();
+            const email = document.getElementById("reg-email").value.trim();
+
+            const contactRaw = document.getElementById("reg-contact").value.trim(); // e.g., "03001234567,0211234567"
+            const contactNumbers = contactRaw.split(",").map(c => c.trim()).filter(c => c.length > 0);
+
+            const response = await fetch("http://localhost:3000/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ userName, password, email, contactNumbers })
+            });
+
+            const data = await response.json();
+            alert(data.message || data.error);
+        }
+
+        // Example function to simulate login and store userID in localStorage
+        function login(userID, userName) {
+            localStorage.setItem('userID', userID); // Store userID in localStorage
+            localStorage.setItem('userName', userName); // Store userName in localStorage
+            window.location.href = 'products.html'; // Redirect to the products page
+        }
+
+        async function loginUser(event) {
+            event.preventDefault();
+            const userName = document.getElementById("login-username").value;
+            const password = document.getElementById("login-password").value;
+
+            const response = await fetch("http://localhost:3000/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ userName, password })
+            });
+
+            const data = await response.json();
+            if (data.userID) {
+                alert("Login Successful! Welcome " + data.userName);
+                localStorage.setItem("user", JSON.stringify(data)); // Save user data
+                login(data.userID, data.userName); // Store userID and redirect
+            } else {
+                alert(data.error);
+            }
+        }
+
+        function toggleForm(showLogin) {
+            document.getElementById("login-form").style.display = showLogin ? "block" : "none";
+            document.getElementById("register-form").style.display = showLogin ? "none" : "block";
+        }
+    </script>
+</head>
+
+<body class="bg-dark d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow-lg" style="width: 350px;">
+        <h3 class="text-center">User Authentication</h3>
+
+        <div id="login-form">
+            <h5 class="text-center">Login</h5>
+            <form onsubmit="loginUser(event)">
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" id="login-username" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="login-password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+                <p class="mt-3 text-center">
+                    Don't have an account? <a href="#" onclick="toggleForm(false)">Register</a>
+                </p>
+            </form>
+        </div>
+
+        <div id="register-form" style="display: none;">
+            <h5 class="text-center">Register</h5>
+            <form onsubmit="registerUser(event)">
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input type="text" id="reg-username" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" id="reg-email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="reg-password" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Contact Numbers</label>
+                    <input type="text" id="reg-contact" class="form-control" placeholder="e.g. 03001234567,0211234567"
+                        required>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100">Register</button>
+                <p class="mt-3 text-center">
+                    Already have an account? <a href="#" onclick="toggleForm(true)">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

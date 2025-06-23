@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Product Reviews</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .review {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+
+    .review:last-child {
+      border-bottom: none;
+    }
+
+    .review strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .rating {
+      color: #f39c12;
+    }
+
+    #addReviewForm {
+      margin-top: 30px;
+      display: none;
+    }
+
+    #addReviewForm input,
+    #addReviewForm textarea,
+    #addReviewForm button {
+      display: block;
+      margin: 8px 0;
+      padding: 8px;
+      width: 300px;
+    }
+
+    #statusMessage {
+      margin-top: 15px;
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Product Reviews</h1>
+  <div id="reviewsContainer">Loading reviews...</div>
+
+  <div id="addReviewForm">
+    <h2>Add Your Review</h2>
+    <input type="number" id="ratingInput" placeholder="Rating (1 to 5)" min="1" max="5" />
+    <textarea id="reviewTextInput" placeholder="Write your review here..."></textarea>
+    <button onclick="submitReview()">Submit Review</button>
+    <div id="statusMessage"></div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const productID = urlParams.get('productID');
+    const userID = localStorage.getItem("userID"); // ✅ from localStorage
+
+    const reviewsContainer = document.getElementById("reviewsContainer");
+    const addReviewForm = document.getElementById("addReviewForm");
+    const statusMessage = document.getElementById("statusMessage");
+
+    if (!productID) {
+      reviewsContainer.innerText = "No product ID provided in URL.";
+    } else {
+      // Load reviews
+      fetch(`http://localhost:3000/product/reviews?productID=${productID}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.error) {
+            reviewsContainer.innerText = data.error;
+          } else if (data.length === 0) {
+            reviewsContainer.innerText = "No reviews found for this product.";
+          } else {
+            reviewsContainer.innerHTML = data.map(review => `
+              <div class="review">
+                <strong>${review.UserName}</strong>
+                <span class="rating">⭐ ${review.Rating}</span>
+                <p>${review.ReviewText}</p>
+                <small>${new Date(review.ReviewDate).toLocaleDateString()}</small>
+              </div>
+            `).join('');
+          }
+        })
+        .catch(error => {
+          console.error("Error loading reviews:", error);
+          reviewsContainer.innerText = "Error loading reviews.";
+        });
+
+      // Check review eligibility
+      if (userID) {
+        fetch("http://localhost:3000/checkReviewEligibility", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userID, productID })
+        })
+          .then(response => response.json())
+          .then(result => {
+            if (result.message.includes("✅")) {
+              addReviewForm.style.display = "block"; // Show the form
+            } else {
+              const msg = document.createElement("p");
+              msg.style.color = "red";
+              msg.innerText = result.message;
+              document.body.appendChild(msg);
+            }
+          })
+          .catch(err => {
+            console.error("Eligibility check failed:", err);
+          });
+      }
+    }
+
+    // Submit review
+    function submitReview() {
+      const rating = document.getElementById("ratingInput").value;
+      const reviewText = document.getElementById("reviewTextInput").value;
+
+      if (!rating || !reviewText) {
+        statusMessage.style.color = "red";
+        statusMessage.innerText = "Please enter both rating and review.";
+        return;
+      }
+
+      fetch(`http://localhost:3000/addReview/${productID}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userID,
+          rating: parseInt(rating),
+          reviewText
+        })
+      })
+        .then(res => res.json())
+        .then(result => {
+          statusMessage.innerText = result.message;
+          statusMessage.style.color = result.message.includes("✅") ? "green" : "red";
+          if (result.message.includes("✅")) {
+            document.getElementById("ratingInput").value = "";
+            document.getElementById("reviewTextInput").value = "";
+            setTimeout(() => {
+              location.reload();
+            }, 1000);
+          }
+        })
+        .catch(error => {
+          console.error("Error submitting review:", error);
+          statusMessage.style.color = "red";
+          statusMessage.innerText = "Error submitting review.";
+        });
+    }
+
+  </script>
+</body>
+
+</html>

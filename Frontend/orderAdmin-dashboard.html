@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders Admin Dashboard</title>
+    <link rel="stylesheet" href="orderAdmin-dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <h1 class="dashboard-title">Orders Admin Dashboard</h1>
+        <button class="change-password-btn" id="changePasswordBtn">Change Password</button>
+        <div class="options">
+            <button class="option-btn" id="viewOrdersBtn"><i class="fas fa-shopping-cart"></i> View Running
+                Orders</button>
+            <button class="option-btn" id="UsersBtn"><i class="fas fa-users"></i> View Users</button>
+        </div>
+
+        <!-- Orders Section -->
+        <div class="section" id="ordersSection">
+            <h2>Filter Orders</h2>
+            <label for="status">Status:</label>
+            <select id="status">
+                <option value="">All</option>
+                <option value="Pending">Pending</option>
+                <option value="Shipped">Shipped</option>
+            </select>
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate">
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate">
+            <button id="filterOrdersBtn">Filter Orders</button>
+
+            <div id="ordersList" class="list-container">No orders to display.</div>
+        </div>
+
+        <!-- Users Section -->
+        <div class="section" id="UsersSection">
+            <h2>Users</h2>
+            <div id="usersList" class="list-container">No users found.</div>
+
+            <!-- Coupon Form Section -->
+            <div id="couponFormSection" class="coupon-form-section" style="display:none;">
+                <h2>Assign a Coupon</h2>
+                <form id="couponForm">
+                    <label for="couponCode">Coupon Code:</label>
+                    <input type="text" id="couponCode" name="couponCode" placeholder="Enter Coupon Code" required>
+
+                    <label for="discount">Discount Percentage:</label>
+                    <input type="number" id="discount" name="discount" placeholder="Enter Discount Percentage" required>
+
+                    <label for="expiryDate">Expiry Date (YYYY-MM-DD):</label>
+                    <input type="date" id="expiryDate" name="expiryDate" required>
+
+                    <button type="submit" id="assignCouponBtn">Assign Coupon</button>
+                </form>
+
+                <!-- Success or Error Message -->
+                <div id="couponMessage" class="coupon-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Order Modal -->
+    <div id="updateOrderModal" class="modal-backdrop" style="display:none;">
+        <div class="modal-content">
+            <h3>Update Order</h3>
+            <form id="updateOrderForm">
+                <label for="modalStatus">Order Status:</label>
+                <select id="modalStatus" required>
+                    <option value="PENDING">Pending</option>
+                    <option value="SHIPPED">Shipped</option>
+                </select>
+
+                <label for="modalPayment">Payment Status:</label>
+                <select id="modalPayment" required>
+                    <option value="PENDING">Pending</option>
+                    <option value="SUCCESSFULL">Completed</option>
+                </select>
+
+                <input type="hidden" id="modalOrderId">
+
+                <div class="modal-buttons">
+                    <button type="submit" class="save-btn">Save</button>
+                    <button type="button" class="cancel-btn" id="cancelUpdateBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="changePasswordModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Change Password</h2>
+            <form id="changePasswordForm">
+                <label for="adminIDInput">Admin ID:</label>
+                <input type="text" id="adminIDInput" name="adminID" required>
+
+                <label for="previousPasswordInput">Current Password:</label>
+                <input type="password" id="previousPasswordInput" name="previousPassword" required>
+
+                <label for="newPasswordInput">New Password:</label>
+                <input type="password" id="newPasswordInput" name="newPassword" required>
+
+                <button type="submit">Change Password</button>
+                <button type="button" id="closeChangePasswordModalBtn">Close</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scriptForOrdersAdmin.js"></script>
+</body>
+
+</html>

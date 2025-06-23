@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Story | SkyCart</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        .story-section {
+            background-color: #000;
+            color: #f2f2f2;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .story-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            color: #c5cfd2a3;
+        }
+
+        .story-content {
+            max-width: 800px;
+            margin: auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cccccc;
+            background-color: #1c1c1c;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        .story-content p {
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .story-section h2 {
+                font-size: 2rem;
+            }
+
+            .story-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="bar">
+        <div class="barcont">
+            <a href="index.html" id="main">
+                <img src="logo.png" alt="Logo" class="logo">
+                SKYCART
+            </a>
+            <div class="toggle" id="mobile-menu">
+                <span class="nbar"></span>
+                <span class="nbar"></span>
+                <span class="nbar"></span>
+            </div>
+            <ul class="menu">
+                <li class="item"><a href="index.html" class="navitem">HOME</a></li>
+                <li class="item"><a href="aboutus.html" class="navitem">INFO</a></li>
+                <li class="navbtn"><a href="login1.html" class="btn">SIGNUP</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- STORY SECTION -->
+    <section class="story-section">
+        <h2>Our Story</h2>
+        <div class="story-content">
+            <p>
+                SkyCart started with a vision — a vision born not in a boardroom, but in a chaotic group chat at 3AM,
+                right after our professor casually announced a "fun little DBMS project."
+            </p>
+            <p>
+                What began as panic-fueled Googling and excessive caffeine consumption turned into something magical
+                (and slightly buggy). Fueled by borderline tears SkyCart was born.
+            </p>
+            <p>
+                Our journey hasn't been easy — we've battled primary keys, survived foreign key constraints, and yes, we
+                even tried to normalize our lives to 3NF (didn’t work). But through it all, we built a platform that
+                connects buyers, sellers, and every confused student out there who just wants to pass DBMS.
+            </p>
+            <p>
+                So if you ever wonder why our code has comments like “don't touch this it works somehow” — just know it
+                came from a place of pure dedication and chaotic brilliance. Welcome to SkyCart. Built with sweat,
+                laughs, and a whole lot of <code>SELECT * FROM pain</code>.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footercont">
+        <div class="footerlinks">
+            <div class="footerlinkwrapper">
+                <div class="footeritems">
+                    <h2>ABOUT US</h2>
+                    <a href="story.html">Story</a>
+                    <a href="activehours.html">Active Hours</a>
+                    <a href="locations.html">Locations</a>
+                </div>
+                <div class="footeritems">
+                    <h2>SHOP</h2>
+                    <a href="login1.html">Range of Products</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="socalmediacont">
+            <div class="socialmediawrap">
+                <div class="footerlogo">
+                    <a href="index.html" id="footerlogo">
+                        <img src="logo.png" alt="Logo" class="logo">
+                    </a>
+                </div>
+                <p class="rights">CLOUDBUY 2025 © ALL RIGHTS RESERVED</p>
+                <div class="socialicons">
+                    <a href="/" class="sm-iconlink">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

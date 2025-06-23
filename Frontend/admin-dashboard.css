@@ -1,0 +1,584 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #101010;
+    /* Dark blue background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    height: 95%;
+    /* Adjusted to provide room for button content */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Dashboard Title */
+.dashboard-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Styling the Change Password button */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 350px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+
+.modal-content h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.modal-content input,
+.modal-content button {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.change-password-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.change-password-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Form container */
+.password-form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border: 2px solid #333;
+    /* Dark border around the form */
+    background: linear-gradient(145deg, #f8f9fa, #dcdfe1);
+    /* Light gradient */
+}
+
+/* Form header */
+.password-form-container h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form input fields */
+.password-form-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.password-form-container input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Submit button */
+.password-form-container button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.password-form-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Close Button below Change Password button */
+.password-form-container .close-btn {
+    background-color: #ff4c4c;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.password-form-container .close-btn:hover {
+    background-color: #cc3c3c;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+#changePasswordModal {
+    display: flex;
+    /* Enable flexbox */
+    justify-content: center;
+    /* Horizontally center */
+    align-items: center;
+    /* Vertically center */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Optional: dark overlay */
+    z-index: 1001;
+}
+
+#changePasswordModal button[type="submit"] {
+    background-color: #007bff;
+    /* Blue */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#changePasswordModal button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#changePasswordModal button#closeChangePasswordModalBtn {
+    background-color: #dc3545;
+    /* Red */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#changePasswordModal button#closeChangePasswordModalBtn:hover {
+    background-color: #c82333;
+}
+
+/* Button Container */
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    /* Adds space below the buttons */
+}
+
+/* Stylish Buttons */
+.option-btn {
+    background-color: #007bff;
+    /* Blue button */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.option-btn i {
+    font-size: 22px;
+}
+
+.option-btn:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+    transform: scale(1.05);
+}
+
+/* Content Section (to display contents of the buttons) */
+.section {
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 2px solid #1d2b53;
+    display: none;
+    /* Content hidden initially, will be shown on button click */
+}
+
+.option-btn:focus {
+    outline: none;
+}
+
+/* Product Cards Grid */
+#products-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Product Card Styling */
+.product-card .card {
+    background-color: #ffffff;
+    border-left: 5px solid #0d6efd;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.product-card .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-card h4 {
+    margin-bottom: 0.75rem;
+}
+
+.product-card p {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.badge {
+    font-size: 0.85rem;
+    padding: 0.35em 0.6em;
+    border-radius: 0.5rem;
+}
+
+/* Section Title */
+#viewProductsSection h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #343a40;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .product-card .card {
+        padding: 1rem;
+    }
+}
+
+/* Inventory List Container */
+#inventory-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Inventory Item Styling */
+.inventory-item {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-left: 5px solid #0d6efd;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.inventory-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.inventory-item h4 {
+    margin-bottom: 0.75rem;
+}
+
+.inventory-item p {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* Transaction Type Badge */
+.badge {
+    font-size: 0.85rem;
+    padding: 0.35em 0.6em;
+    border-radius: 0.5rem;
+}
+
+/* Title for Inventory Section */
+#inventoryDetailsSection h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #343a40;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .inventory-item {
+        padding: 1rem;
+    }
+}
+
+/* Sales Report Section Grid */
+#sales-report {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Report Card Styling */
+.report-card .card {
+    background-color: #ffffff;
+    border-left: 5px solid #198754;
+    /* Bootstrap success green */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.report-card .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.report-card h4 {
+    margin-bottom: 0.75rem;
+}
+
+.report-card p {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .report-card .card {
+        padding: 1rem;
+    }
+}
+
+/* Admins List Layout */
+#admins-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Individual Admin Card */
+.admin-card {
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.admin-card h4 {
+    margin-bottom: 0.5rem;
+}
+
+.admin-card p {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* Button styling handled by Bootstrap */
+
+.toggle-btn {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    border: none;
+    letter-spacing: 0.5px;
+}
+
+.btn-outline-success.toggle-btn {
+    background-color: #e6f9f0;
+    color: #28a745;
+    border: 2px solid #28a745;
+}
+
+.btn-outline-success.toggle-btn:hover {
+    background-color: #28a745;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.2);
+}
+
+.btn-outline-danger.toggle-btn {
+    background-color: #fdeaea;
+    color: #dc3545;
+    border: 2px solid #dc3545;
+}
+
+.btn-outline-danger.toggle-btn:hover {
+    background-color: #dc3545;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(220, 53, 69, 0.2);
+}
+
+.order-card {
+    background: #fff;
+    border: 2px solid #dee2e6;
+    border-radius: 20px;
+    padding: 20px 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.order-id {
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.order-status {
+    color: #0d6efd;
+    margin-bottom: 6px;
+}
+
+.order-total {
+    color: #198754;
+}
+
+.customer-card {
+    background: #fff;
+    border: 2px solid #e9ecef;
+    border-radius: 20px;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.customer-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.customer-name {
+    font-size: 1.25rem;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.customer-name .email {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.order-history-btn {
+    margin-top: 15px;
+    padding: 8px 15px;
+    background: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.order-history-btn:hover {
+    background: #0b5ed7;
+}
+
+.orders-list {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+.order-history-item {
+    background: #f8f9fa;
+    border-left: 4px solid #0d6efd;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+}

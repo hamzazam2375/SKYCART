@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="admin-login-page">
+        <div class="login-container">
+            <h1>Admin Login</h1>
+            <form id="admin-login-form">
+                <div class="form-group">
+                    <label for="AdminID">Admin ID</label>
+                    <input type="text" id="AdminID" name="AdminID" required>
+                </div>
+                <div class="form-group">
+                    <label for="Admin_Pass">Password</label>
+                    <input type="password" id="Admin_Pass" name="Admin_Pass" required>
+                </div>
+                <div class="form-group">
+                    <label for="AdminRole">Role</label>
+                    <select id="AdminRole" name="AdminRole" required>
+                        <option value="Products_Head">Products Head</option>
+                        <option value="Orders_Head">Orders Head</option>
+                        <option value="Head">Head Admin</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+            <div class="signup-link">
+                <p>Don't have an account? <a href="admin-signup.html">Sign up here</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
